@@ -24,8 +24,6 @@ def faz_jogada (tabuleiro, linha, coluna):
     return tabuleiro 
 
 
-
-
 def posiciona_frota(frota):
     tabuleiro = []
 
@@ -46,5 +44,27 @@ def posiciona_frota(frota):
                 tabuleiro[linha][coluna] = 1
 
     return tabuleiro
-    
 
+def afundados (dicionário_embarcacoes, tabuleiro):
+    afundados_totais=0
+    
+    for tipo in dicionário_embarcacoes:
+        z = 0
+        
+        while z < len(dicionário_embarcacoes[tipo]):
+            navio = dicionário_embarcacoes[tipo][z]
+            quantidade =0 
+
+            for posicao in navio:
+                linha = posicao[0]
+                coluna = posicao[1]
+
+                if tabuleiro[linha][coluna] == "X":
+                    quantidade += 1
+
+            if quantidade == len(navio):
+                afundados_totais += 1
+
+            z += 1
+
+    return afundados_totais
