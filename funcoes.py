@@ -68,3 +68,20 @@ def afundados (dicionário_embarcacoes, tabuleiro):
             z += 1
 
     return afundados_totais
+
+def posicao_valida(dicionario_embarcacoes, linha, coluna, orientacao, tamanho):
+    posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
+
+    for posicao in posicoes:
+        l = posicao[0]
+        c = posicao[1]
+
+        if l < 0 or l >= 10 or c >=10:
+            return False
+
+        for tipo in dicionario_embarcacoes:
+            for navio in dicionario_embarcacoes[tipo]:
+                for posicao_ocupada in navio:
+                    if posicao == posicao_ocupada:
+                        return False
+    return True
