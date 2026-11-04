@@ -76,7 +76,7 @@ def posicao_valida(dicionario_embarcacoes, linha, coluna, orientacao, tamanho):
         l = posicao[0]
         c = posicao[1]
 
-        if l < 0 or l >= 10 or c >=10:
+        if l < 0 or l >= 10 or c < 0 or c >=10:
             return False
 
         for tipo in dicionario_embarcacoes:
@@ -96,3 +96,4 @@ def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
         oponente_info = '  '.join([info if str(info) in 'X-' else '0' for info in tabuleiro_oponente[linha]])
         texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
     return texto
+
